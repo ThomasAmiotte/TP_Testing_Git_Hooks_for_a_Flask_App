@@ -1,0 +1,14 @@
+image: python:3.13
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+test:
+  script:
+    - pip install ruff pytest flask
+    - ruff check .
+    - pytest
